@@ -10,6 +10,7 @@
     </parameters>
 
     <services>
+        <!-- Domain Services -->
         <service id="acme.mailer" class="%acme.mailer.class%">
             <argument type="service" id="logger" />
         </service>
