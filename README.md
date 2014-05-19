@@ -13,7 +13,7 @@
 
 ## Create custom event for changes that are relevant for domain
 
-* Creating Cutom Event
+* Creating Custom Event
 
 ## Dispatching events
 
