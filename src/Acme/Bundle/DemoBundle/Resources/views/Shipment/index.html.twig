@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<a href="{{ path('new') }}">New shipment</a>
+
+<ul>
+    {% for shipment in shipments %}
+    <li>
+        #{{ shipment.id }}
+        <strong>{{ shipment.status }}</strong>
+
+        {% if shipment.status == 'created' %}
+        <a href="{{ path('ship', { id: shipment.id }) }}" style="">
+            Ship!
+        </a>
+        {% endif %}
+
+        {% if shipment.status == 'shiped' %}
+        <a href="{{ path('receive', { id: shipment.id }) }}" style="">
+            Receive
+        </a>
+        {% endif %}
+    </li>
+    {% else %}
+    <li>No shipments yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
