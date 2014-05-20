@@ -63,7 +63,7 @@ class Shipment
     /**
      * Set status as Shiped
      */
-    public function setShiped()
+    public function ship()
     {
         $this->status = static::STATUS_SHIPED;
     }
@@ -71,7 +71,7 @@ class Shipment
     /**
      * Set status as Arrived
      */
-    public function setArrived()
+    public function receive()
     {
         $this->status = static::STATUS_ARRIVED;
     }

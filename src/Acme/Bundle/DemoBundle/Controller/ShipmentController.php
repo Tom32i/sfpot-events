@@ -45,7 +45,7 @@ class ShipmentController extends Controller
     {
         $manager = $this->getDoctrine()->getManager();
 
-        $shipment->setShiped();
+        $shipment->ship();
 
         $manager->persist($shipment);
         $manager->flush();
@@ -60,7 +60,7 @@ class ShipmentController extends Controller
     {
         $manager = $this->getDoctrine()->getManager();
 
-        $shipment->setArrived();
+        $shipment->receive();
 
         $manager->persist($shipment);
         $manager->flush();
