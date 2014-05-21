@@ -9,25 +9,21 @@ Symfony2 EventDispatcher Component:
 * Listener: Event are received
 
 ## Using events for your domain worflow:
-### What we don't want to do
 
+### What we don't want to do
 * Coupling domain workflow/logic with controllers and doctrine events
 
-## Create custom event for changes that are relevant for domain
-
+### Create custom event for changes that are relevant for domain
 * Creating Custom Event
 
 ### Dispatching events
-
 * Doctrine (Post flush trick)
 * Domain services
 
 ### Listening to events
-
 * Domain services (Mailer, Export, ...)
 * Working with kernel.terminate
 
 ## Using event to make your code extensible
-
-* Provide entry point to other developers
+* Provide entry points to your code for other developers
 * Use propagation
