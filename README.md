@@ -1,13 +1,15 @@
 [DRAFT] Symfony2: working with events
 =============================
 
-## Symfony2 EventDispatcher Component
+## What are Events? (in Symfony)
 
+Symfony2 EventDispatcher Component:
 * Event: Symfony\Component\EventDispatcher\Event (name, propagation)
 * Dispatcher: Event are dispatched
 * Listener: Event are received
 
-## What we don't want to do
+## Using events for your domain worflow:
+### What we don't want to do
 
 * Coupling domain workflow/logic with controllers and doctrine events
 
@@ -15,12 +17,17 @@
 
 * Creating Custom Event
 
-## Dispatching events
+### Dispatching events
 
 * Doctrine (Post flush trick)
 * Domain services
 
-## Listening to events
+### Listening to events
 
 * Domain services (Mailer, Export, ...)
 * Working with kernel.terminate
+
+## Using event to make your code extensible
+
+* Provide entry point to other developers
+* Use propagation
