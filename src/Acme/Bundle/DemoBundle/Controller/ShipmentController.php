@@ -30,10 +30,8 @@ class ShipmentController extends Controller
     public function newAction()
     {
         $shipment = new Shipment();
-        $manager  = $this->getDoctrine()->getManager();
 
-        $manager->persist($shipment);
-        $manager->flush();
+        $this->persist($shipment);
 
         return $this->redirect($this->generateUrl('index'));
     }
@@ -43,12 +41,9 @@ class ShipmentController extends Controller
      */
     public function shipAction(Shipment $shipment)
     {
-        $manager = $this->getDoctrine()->getManager();
-
         $shipment->ship();
 
-        $manager->persist($shipment);
-        $manager->flush();
+        $this->persist($shipment);
 
         return $this->redirect($this->generateUrl('index'));
     }
@@ -58,13 +53,23 @@ class ShipmentController extends Controller
      */
     public function receiveAction(Shipment $shipment)
     {
-        $manager = $this->getDoctrine()->getManager();
-
         $shipment->receive();
+
+        $this->persist($shipment);
+
+        return $this->redirect($this->generateUrl('index'));
+    }
+
+    /**
+     * Persist a Shipment
+     *
+     * @param Shipment $shipment
+     */
+    protected function persist(Shipment $shipment)
+    {
+        $manager = $this->getDoctrine()->getManager();
 
         $manager->persist($shipment);
         $manager->flush();
-
-        return $this->redirect($this->generateUrl('index'));
     }
 }

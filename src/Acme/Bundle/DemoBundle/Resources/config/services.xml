@@ -5,12 +5,17 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
+        <parameter key="acme.shipment_manager.class">Acme\Service\ShipmentManager</parameter>
         <parameter key="acme.mailer.class">Acme\Service\ShipmentMailer</parameter>
         <parameter key="acme.exporter.class">Acme\Service\ShipmentExporter</parameter>
     </parameters>
 
     <services>
         <!-- Domain Services -->
+        <service id="acme.shipment_manager" class="%acme.shipment_manager.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
         <service id="acme.mailer" class="%acme.mailer.class%">
             <argument type="service" id="logger" />
         </service>
