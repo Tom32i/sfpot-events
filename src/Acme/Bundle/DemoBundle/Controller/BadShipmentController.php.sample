@@ -1,0 +1,66 @@
+<?php
+
+/**
+ * /!\ WARNING /!\
+ *
+ * This is the kind of workflow we want to avoid!
+ * You do not want to rely on that code :)
+ *
+ * /!\ WARNING /!\
+ */
+
+namespace Acme\Bundle\DemoBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
+use Acme\Bundle\DemoBundle\Entity\Shipment;
+
+/**
+ * Bad Shipment Controller
+ */
+class BadShipmentController extends Controller
+{
+    /**
+     * Creating a new Shipment
+     */
+    public function newAction()
+    {
+        $shipment = new Shipment();
+        $manager  = $this->getDoctrine()->getManager();
+        $mailer   = $this->get('acme.mailer');
+
+        $manager->persist($shipment);
+        $manager->flush();
+
+        // I need to send an email when there's a new Shipment
+        $mailer->sendNotificationMail($shipment, null, $shipment->getStatus());
+
+        return $this->redirect($this->generateUrl('index'));
+    }
+
+    /**
+     * A Shipment has been received
+     */
+    public function receiveAction(Shipment $shipment)
+    {
+        $manager   = $this->getDoctrine()->getManager();
+        $exporter  = $this->get('acme.mailer');
+        $oldStatus = $shipment->getStatus();
+
+        $shipment->receive();
+
+        $manager->persist($shipment);
+        $manager->flush();
+
+        // I need to send another email
+        $mailer->sendNotificationMail($shipment, $oldStatus, $shipment->getStatus());
+
+        // Well, I also need to export the Shipment data
+        // I hop it wont be long because the client is waiting for a response...
+        $exporter->export($shipment);
+
+        return $this->redirect($this->generateUrl('index'));
+    }
+}
