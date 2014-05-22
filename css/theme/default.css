@@ -146,3 +146,7 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #13daec; }
+
+section strong {
+  color: #71e9f4;
+}

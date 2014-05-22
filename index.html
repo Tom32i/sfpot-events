@@ -47,20 +47,37 @@
 				</section>
 
 				<section>
-					<h2>What are Events? <small>(in Symfony)</small></h2>
+					<section>
+						<h2>What are Events? <small>(in Symfony)</small></h2>
 
-					<p><i>The EventDispatcher Component</i></p>
+						<p><i>The EventDispatcher Component</i></p>
+						<ul>
+							<li>Event</li>
+							<li>Dispatcher</li>
+							<li>Listener</li>
+						</ul>
+					</section>
 
-					<ul>
-						<li>Event</li>
-						<li>Dispatcher</li>
-						<li>Listener</li>
-					</ul>
+					<section>
+						<h3>Event</h3>
+						<p>Extend <strong>Symfony\Component\EventDispatcher\Event</strong></p>
+					</section>
+
+					<section>
+						<h3>Dispatcher</h3>
+						<p><strong>Symfony\Component\EventDispatcher\EventDispatcher</strong></p>
+					</section>
+
+					<section>
+						<h3>Listener</h3>
+						<p>Listen with the <strong>kernel.event_listener</strong> tag</p>
+						<p>Subscribe with the <strong>kernel.event_subscriber</strong> tag</p>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>Using events for your domain worflow</h2>
+						<h2>Define your domain worflow</h2>
 					</section>
 
 					<section>
@@ -89,13 +106,13 @@
 						<h3>Listening to events</h3>
 						<ul>
 							<li>Domain services (Mailer, Export, ...)</li>
-							<li>Working with kernel.terminate</li>
+							<li>Working with <strong>kernel.terminate</strong></li>
 						</ul>
 					</section>
 				</section>
 
 				<section>
-					<h2>Using event to make your code extensible</h2>
+					<h2>Make your code extensible</h2>
 					<ul>
 						<li>Provide entry points</li>
 						<li>Use propagation</li>
